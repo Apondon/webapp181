@@ -17,7 +17,7 @@
                 </nut-col>
                 <nut-col :span="6">
                     <div class="buyBtn">
-                        <span @click="clickHandle">立即购买</span>
+                        <span @click="clickHandle(item)">立即购买</span>
                     </div>
                 </nut-col>
             </nut-row>
@@ -42,8 +42,16 @@ export default {
         }
     },
     methods:{
-        clickHandle(id){
-            this.$router.push('/seats')
+        clickHandle(item){
+            this.$router.push({
+                name:'Seats',
+                params:{
+                    name:this.name, // 电影名
+                    room:item.room, // 放映厅
+                    time:item.date, // 放映时间
+                    price:item.price // 票价
+                }
+            })
         }
     },
     mounted(){
