@@ -199,6 +199,39 @@ export default {
                        }
                    }
                 } 
+                // 生成订单信息
+                // 获取座位数据
+                let seats = [] // 保存座位数据
+                for(const t of this.ticketsData){
+                    seats.push(`${t.row}排 ${t.col}座`)
+                }
+                // 生成订单数据
+                let orderObj= {
+                    id:new Date().getTime(), //订单id
+                    name:this.name,//电影名
+                    num:this.ticketsData.length, //票数
+                    date:this.roomInfo, // 播放时间
+                    seats:seats, //座位信息
+                    price:this.ticketsData.length*this.price,
+                    status:'已完成'
+                }
+
+                let storage = localStorage.getItem('order')
+                
+                // 1.判断之前是否有订单信息
+                let arr = [] // 若之前无订单记录
+                console.log(!!storage)
+                if(!!storage){//若存在之前的订单记录
+                    arr = JSON.parse(storage)
+                    // console.log(arr)
+                }
+                // else{ // 若之前无订单记录
+                //     //创建订单记录并保存在localstorage中
+                //     arr = []  
+                // }
+                arr.push(orderObj)
+                localStorage.setItem('order',JSON.stringify(arr))
+
                 this.ticketsData = []
 
             }else alert('请先选择座位')   // 2.没有要结算的票 

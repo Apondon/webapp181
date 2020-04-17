@@ -1,6 +1,6 @@
 <template>
     <div class="order">
-        <div class="warpper">
+        <div class="warpper" v-if='flag'>
             <div class="orderCard" v-for="item in list" :key='item.id'>
                 <div class="orderUp">
                     <nut-row>
@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <div class="noOrder" v-if='!flag'>当前没有订单信息</div>
         <Footer mark='order'/>
     </div>
 </template>
@@ -47,11 +48,22 @@ export default {
                     price:140,
                     status:'已完成'
                 }
-            ]
+            ],
+            flag:false,
         }
     },
     components:{
         Footer
+    },
+    mounted(){
+        const data = localStorage.getItem('order')
+        console.log(data)
+        if(!!data){ // 将当前取到的值转换为boolean类型
+            
+        
+        }else this.flag = false
+
+        
     }
 }
 </script>
@@ -80,6 +92,9 @@ export default {
             background: red;
         }
     }
+  }
+  .noOrder{
+      flex:1;
   }
 }
 </style>
