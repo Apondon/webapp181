@@ -8,7 +8,10 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      keepAlive:false,
+    }
   },
   {
     path: '/about',
@@ -18,37 +21,58 @@ Vue.use(VueRouter)
   {
     path: '/order',
     name: 'Order',
-    component: () => import('../views/Order.vue')
+    component: () => import('../views/Order.vue'),
+    meta:{
+      keepAlive:false,
+    }
   },
   {
     path: '/user',
     name: 'User',
-    component: () => import('../views/User.vue')
+    component: () => import('../views/User.vue'),
+    meta:{
+      keepAlive:false,
+    }
   },
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import('../views/Detail.vue')
+    component: () => import('../views/Detail.vue'),
+    meta:{
+      keepAlive:true,
+    }
   },
   {
     path: '/theater',
     name: 'Theater',
-    component: () => import('../views/Theater.vue')
+    component: () => import('../views/Theater.vue'),
+    meta:{
+      keepAlive:true,
+    }
   },
   {
     path: '/seats',
     name: 'Seats',
-    component: () => import('../views/Seats.vue')
+    component: () => import('../views/Seats.vue'),
+    meta:{
+      keepAlive:false,
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
+    meta:{
+      keepAlive:false,
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../views/Register.vue')
+    component: () => import('../views/Register.vue'),
+    meta:{
+      keepAlive:false,
+    }
   },
 
 ]

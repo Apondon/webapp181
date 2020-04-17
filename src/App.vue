@@ -9,7 +9,11 @@
       >
       {{pageName}}
     </nut-navbar>
-    <router-view/>
+    <keep-alive>
+        <router-view v-if='$route.meta.keepAlive'/>
+    </keep-alive>
+    <router-view v-if='!$route.meta.keepAlive'/>
+    
   </div>
 </template>
 <script>
@@ -33,8 +37,7 @@ export default {
   },
   watch:{
     '$route'(newVal){
-      console.log(newVal)
-      
+     
       if(newVal.name == 'Login') this.showHead = false
       else this.showHead = true
 
@@ -51,7 +54,7 @@ export default {
   },
   methods:{
     backHandle(){
-      this.$router.push('/')
+      this.$router.back()
     }
   }
 }
