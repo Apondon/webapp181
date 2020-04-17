@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <Footer />
+        <Footer mark='order'/>
     </div>
 </template>
 <script>

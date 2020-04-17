@@ -7,7 +7,7 @@
             </div>
             <nut-button block @click='clickHandle'>点击退出</nut-button>
         </div>
-        <Footer />
+        <Footer mark='user' />
     </div>
 </template>
 <script>

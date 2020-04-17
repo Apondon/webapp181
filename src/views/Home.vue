@@ -25,7 +25,7 @@
         </nut-row>
         </div>
       </div>
-      <Footer />
+      <Footer mark='home'/>
   </div>
 </template>
 
