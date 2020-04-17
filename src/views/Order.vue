@@ -1,29 +1,31 @@
 <template>
     <div class="order">
         <div class="warpper" v-if='flag'>
-            <div class="orderCard" v-for="item in list" :key='item.id'>
-                <div class="orderUp">
-                    <nut-row>
-                        <nut-col :span="5">
-                            <div class="imgWarp">
-                                <div class="img"></div>
-                            </div>
-                        </nut-col>
-                        <nut-col :span="19">
-                            <div class="orderDetail">
-                                <div class="orderTitle">
-                                    <span class="movName">{{item.name}}</span>
-                                    <span class="movNum">{{`${item.num}张`}}</span>
+            <div class='showOrder'>
+                <div class="orderCard" v-for="item in list" :key='item.id'>
+                    <div class="orderUp">
+                        <nut-row>
+                            <nut-col :span="5">
+                                <div class="imgWarp">
+                                    <div class="img"></div>
                                 </div>
-                                <div class="orderDate">{{item.date}}</div>
-                                <div class="orderSeats">{{item.seats.join(',')}}</div>
-                            </div>
-                        </nut-col>
-                    </nut-row>
-                </div>
-                <div class="orderDown">
-                    <span class="odrPrice">{{`总价:${item.price}`}}</span>
-                    <span class="odrStatus">{{item.status}}</span>
+                            </nut-col>
+                            <nut-col :span="19">
+                                <div class="orderDetail">
+                                    <div class="orderTitle">
+                                        <span class="movName">{{item.name}}</span>
+                                        <span class="movNum">{{`${item.num}张`}}</span>
+                                    </div>
+                                    <div class="orderDate">{{item.date}}</div>
+                                    <div class="orderSeats">{{item.seats.join(',')}}</div>
+                                </div>
+                            </nut-col>
+                        </nut-row>
+                    </div>
+                    <div class="orderDown">
+                        <span class="odrPrice">{{`总价:${item.price}`}}</span>
+                        <span class="odrStatus">{{item.status}}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,24 +61,30 @@ export default {
         const data = localStorage.getItem('order')
         console.log(data)
         if(!!data){ // 将当前取到的值转换为boolean类型
-            
-        
-        }else this.flag = false
-
-        
+            this.list = JSON.parse(data)
+            this.flag = true 
+        }else this.flag = false 
     }
 }
 </script>
 <style lang="scss" scoped>
 .order{
-  height: 100%;
+  height: 100%-60;
+  flex:1;
   display: flex;
   flex-direction: column;
   .warpper{
     flex: 1;
-    overflow-y: auto;
+    height: 100%-44;
+    .showOrder{
+        height: 100%;
+        overflow-y: auto;
+        background: bisque;
+    }
     .orderCard{
         text-align: left;
+        margin-bottom: 5px;
+        background: #fff;
         .orderUp{
             border-bottom: 1px solid #f3f3f3;
         }

@@ -220,15 +220,9 @@ export default {
                 
                 // 1.判断之前是否有订单信息
                 let arr = [] // 若之前无订单记录
-                console.log(!!storage)
-                if(!!storage){//若存在之前的订单记录
-                    arr = JSON.parse(storage)
-                    // console.log(arr)
-                }
-                // else{ // 若之前无订单记录
-                //     //创建订单记录并保存在localstorage中
-                //     arr = []  
-                // }
+                if(!!storage)//若存在之前的订单记录
+                    arr = JSON.parse(storage)   
+                
                 arr.push(orderObj)
                 localStorage.setItem('order',JSON.stringify(arr))
 

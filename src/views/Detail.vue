@@ -102,7 +102,6 @@ export default {
     },
     methods:{
         clickHandle(){
-            
             this.$router.push({
                 name:'Theater',
                 params:{
